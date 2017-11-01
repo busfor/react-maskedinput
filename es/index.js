@@ -100,15 +100,7 @@ var MaskedInput = function (_React$Component) {
 
   MaskedInput.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
     if (this.props.mask !== nextProps.mask && this.props.value !== nextProps.mask) {
-      // if we get a new value and a new mask at the same time
-      // check if the mask.value is still the initial value
-      // - if so use the nextProps value
-      // - otherwise the `this.mask` has a value for us (most likely from paste action)
-      if (this.mask.getValue() === this.mask.emptyValue) {
-        this.mask.setPattern(nextProps.mask, { value: nextProps.value });
-      } else {
-        this.mask.setPattern(nextProps.mask, { value: this.mask.getRawValue() });
-      }
+      this.mask.setPattern(nextProps.mask, { value: nextProps.value });
     } else if (this.props.mask !== nextProps.mask) {
       this.mask.setPattern(nextProps.mask, { value: this.mask.getRawValue() });
     } else if (this.props.value !== nextProps.value) {
