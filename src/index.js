@@ -44,6 +44,11 @@ function getSelection (el) {
 function setSelection(el, selection) {
   var rangeEl
 
+  // don't set selection if el is not focused
+  if (el !== document.activeElement) {
+    return;
+  }
+
   try {
     if (el.selectionStart !== undefined) {
       el.focus()
